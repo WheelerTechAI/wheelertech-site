@@ -65,25 +65,33 @@
         </div>
 
         <div class="form-card">
-          <!-- FORM: Replace YOUR_FORM_ID with your Formspree form ID after signing up at formspree.io -->
-          <form id="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+          <div data-fs-success style="display:none;" class="form-success">
+            Thank you for reaching out. Bill will be in touch within one business day.
+          </div>
+          <div data-fs-error style="display:none; color:#b91c1c; margin-bottom:1rem; font-size:0.9rem;"></div>
+
+          <form id="contact-form">
             <div class="form-row">
               <div class="form-group">
                 <label for="first-name">First Name *</label>
-                <input type="text" id="first-name" name="first_name" required>
+                <input type="text" id="first-name" name="first_name" required data-fs-field>
+                <span data-fs-error="first_name" style="color:#b91c1c; font-size:0.82rem;"></span>
               </div>
               <div class="form-group">
                 <label for="last-name">Last Name *</label>
-                <input type="text" id="last-name" name="last_name" required>
+                <input type="text" id="last-name" name="last_name" required data-fs-field>
+                <span data-fs-error="last_name" style="color:#b91c1c; font-size:0.82rem;"></span>
               </div>
             </div>
             <div class="form-group">
               <label for="org">Organization Name *</label>
-              <input type="text" id="org" name="organization" required>
+              <input type="text" id="org" name="organization" required data-fs-field>
+              <span data-fs-error="organization" style="color:#b91c1c; font-size:0.82rem;"></span>
             </div>
             <div class="form-group">
               <label for="email">Email Address *</label>
-              <input type="email" id="email" name="email" required>
+              <input type="email" id="email" name="email" required data-fs-field>
+              <span data-fs-error="email" style="color:#b91c1c; font-size:0.82rem;"></span>
             </div>
             <div class="form-group">
               <label for="phone">Phone Number (optional)</label>
@@ -91,7 +99,7 @@
             </div>
             <div class="form-group">
               <label for="org-type">What best describes your organization? *</label>
-              <select id="org-type" name="org_type" required>
+              <select id="org-type" name="org_type" required data-fs-field>
                 <option value="" disabled selected>Select one</option>
                 <option value="nonprofit">Nonprofit / Association</option>
                 <option value="genealogy">Genealogical Society</option>
@@ -99,21 +107,25 @@
                 <option value="faith">Faith-Based Organization</option>
                 <option value="other">Other</option>
               </select>
+              <span data-fs-error="org_type" style="color:#b91c1c; font-size:0.82rem;"></span>
             </div>
             <div class="form-group">
               <label for="message">What are you hoping to accomplish? *</label>
-              <textarea id="message" name="message" required placeholder="Tell us about your organization and what you'd like to achieve with AI..."></textarea>
+              <textarea id="message" name="message" required data-fs-field placeholder="Tell us about your organization and what you'd like to achieve with AI..."></textarea>
+              <span data-fs-error="message" style="color:#b91c1c; font-size:0.82rem;"></span>
             </div>
             <div class="form-group">
               <label for="referral">How did you hear about Wheeler Tech AI? (optional)</label>
               <input type="text" id="referral" name="referral">
             </div>
-            <button type="submit" class="btn btn-primary" style="width: 100%;">Send Message</button>
+            <button type="submit" class="btn btn-primary" style="width:100%;" data-fs-submit-btn>Send Message</button>
           </form>
 
-          <div id="form-success" class="form-success">
-            Thank you for reaching out. Bill will be in touch within one business day.
-          </div>
+          <script>
+            window.formspree = window.formspree || function () { (formspree.q = formspree.q || []).push(arguments); };
+            formspree('initForm', { formElement: '#contact-form', formId: 'mrerkank' });
+          </script>
+          <script src="https://unpkg.com/@formspree/ajax@1" defer></script>
         </div>
 
       </div>
