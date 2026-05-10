@@ -490,6 +490,103 @@ p:last-child { margin-bottom: 0; }
 .cta-band p { color: rgba(255,255,255,0.72); font-size: 1.1rem; }
 .cta-band-actions { display: flex; flex-direction: column; gap: 0.75rem; align-items: flex-end; }
 
+/* ─── Claude Practice Page ───────────────────────────────────── */
+
+/* Nav dropdown */
+.nav-item-dropdown { position: relative; }
+.nav-dropdown {
+  display: none;
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  background: var(--white);
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  min-width: 210px;
+  padding: 0.5rem 0;
+  z-index: 200;
+  list-style: none;
+}
+.nav-item-dropdown:hover .nav-dropdown,
+.nav-item-dropdown:focus-within .nav-dropdown { display: block; }
+.nav-dropdown a {
+  display: block;
+  padding: 0.55rem 1.1rem;
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: var(--text-mid);
+  white-space: nowrap;
+  border-radius: 0;
+  transition: background var(--transition), color var(--transition);
+}
+.nav-dropdown a:hover,
+.nav-dropdown a:focus { background: var(--gray-100); color: var(--navy); }
+
+/* Mobile-only flat nav link (Services sub-page link in hamburger menu) */
+.mobile-only { display: none; }
+
+/* Service card: gold left accent on top of .card base */
+/* NOTE: must appear after .card:hover in cascade to restore border-left on hover */
+.claude-service-card { border-left: 3px solid var(--gold); }
+.claude-service-card:hover { border-left-color: var(--gold); }
+.claude-service-card:focus-within { outline: 2px solid var(--navy); outline-offset: 2px; }
+
+/* Evidence grid: 2x2 layout */
+.evidence-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+
+/* Evidence tile overrides on top of .card */
+.evidence-tile { padding: 1.75rem; }
+.evidence-tile:hover { border-color: var(--navy); box-shadow: var(--shadow); }
+.evidence-tile:focus-within { outline: 2px solid var(--navy); outline-offset: 2px; }
+.evidence-tile h3 { font-size: 1.05rem; margin-bottom: 0.6rem; }
+.tile-link {
+  display: inline-block;
+  margin-top: 1rem;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--navy);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color var(--transition);
+}
+.tile-link:hover { color: var(--gold); }
+
+/* Serve list: two-column styled list with CSS gold dots */
+.serve-list {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0 2.5rem;
+  margin-top: 1.5rem;
+}
+.serve-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  font-size: 0.95rem;
+  color: var(--text-mid);
+  padding: 0.65rem 0;
+  border-bottom: 1px solid var(--gray-200);
+}
+.serve-list li::before {
+  content: '';
+  width: 7px;
+  height: 7px;
+  min-width: 7px;
+  background: var(--gold);
+  border-radius: 50%;
+  margin-top: 0.55rem;
+  flex-shrink: 0;
+}
+
+/* 3-column tiles modifier for Why Claude section */
+.tiles-grid-3 { grid-template-columns: repeat(3, 1fr); }
+
 /* ─── Contact ────────────────────────────────────────────────── */
 .contact-grid {
   display: grid;
@@ -624,6 +721,10 @@ p:last-child { margin-bottom: 0; }
   .stat-grid  { grid-template-columns: repeat(2, 1fr); }
   .hero-inner { grid-template-columns: 1fr; }
   .hero-visual { display: none; }
+  .evidence-grid  { grid-template-columns: repeat(2, 1fr); }
+  .tiles-grid-3   { grid-template-columns: repeat(2, 1fr); }
+  .nav-dropdown   { display: none !important; }
+  .mobile-only    { display: list-item; }
 }
 @media (max-width: 768px) {
   .nav-links { display: none; flex-direction: column; }
@@ -655,4 +756,7 @@ p:last-child { margin-bottom: 0; }
   .tiles-grid { grid-template-columns: 1fr; }
   .stat-grid  { grid-template-columns: 1fr 1fr; }
   .section    { padding: 4rem 0; }
+  .evidence-grid  { grid-template-columns: 1fr; }
+  .serve-list     { grid-template-columns: 1fr; }
+  .tiles-grid-3   { grid-template-columns: 1fr; }
 }
